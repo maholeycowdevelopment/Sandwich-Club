@@ -69,23 +69,23 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
 
-        if(sandwich.getAlsoKnownAs() != null) {
+        if(sandwich.getAlsoKnownAs() != null || !sandwich.getAlsoKnownAs().isEmpty()) {
             for (String aka : sandwich.getAlsoKnownAs()) {
-                mAlsoKnowAsTextView.append(aka);
+                mAlsoKnowAsTextView.append(aka + "\n");
             }
         } else {
-            mAlsoKnowAsTextView.setText("None");
+            mAlsoKnowAsTextView.append("None\n");
         }
 
-        if(sandwich.getIngredients() != null) {
+        if(sandwich.getIngredients() != null || !sandwich.getIngredients().isEmpty()) {
             for(String ingredient : sandwich.getIngredients()) {
-                mIngredientsTextView.append(ingredient);
+                mIngredientsTextView.append(ingredient + "\n");
             }
         } else {
-            mIngredientsTextView.setText("Unavailable");
+            mIngredientsTextView.append("Unavailable\n" );
         }
 
-        mDescriptionTextView.append(sandwich.getDescription());
-        mPlaceOfOriginTextView.append(sandwich.getPlaceOfOrigin());
+        mDescriptionTextView.append(sandwich.getDescription() + "\n");
+        mPlaceOfOriginTextView.append(sandwich.getPlaceOfOrigin() + "\n");
     }
 }

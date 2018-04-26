@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,7 +50,7 @@ public class JsonUtils {
             return null;
         }
 
-        List<String> list = null;
+        List<String> list = new ArrayList<String>();
 
         for(int i = 0; i < jsonArray.length(); i++) {
             try {
