@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,7 +70,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
 
-        if(sandwich.getAlsoKnownAs() != null || !sandwich.getAlsoKnownAs().isEmpty()) {
+        if(sandwich.getAlsoKnownAs() != null && sandwich.getAlsoKnownAs().size() != 0) {
             for (String aka : sandwich.getAlsoKnownAs()) {
                 mAlsoKnowAsTextView.append(aka + "\n");
             }
@@ -77,7 +78,7 @@ public class DetailActivity extends AppCompatActivity {
             mAlsoKnowAsTextView.append("None\n");
         }
 
-        if(sandwich.getIngredients() != null || !sandwich.getIngredients().isEmpty()) {
+        if(sandwich.getIngredients() != null && sandwich.getIngredients().size() != 0) {
             for(String ingredient : sandwich.getIngredients()) {
                 mIngredientsTextView.append(ingredient + "\n");
             }
@@ -85,7 +86,12 @@ public class DetailActivity extends AppCompatActivity {
             mIngredientsTextView.append("Unavailable\n" );
         }
 
+        if(sandwich.getPlaceOfOrigin() != null && !sandwich.getPlaceOfOrigin().equals("")) {
+            mPlaceOfOriginTextView.append(sandwich.getPlaceOfOrigin() + "\n");
+        } else {
+            mPlaceOfOriginTextView.append("Unknown\n");
+        }
+
         mDescriptionTextView.append(sandwich.getDescription() + "\n");
-        mPlaceOfOriginTextView.append(sandwich.getPlaceOfOrigin() + "\n");
     }
 }
